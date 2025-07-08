@@ -1,28 +1,20 @@
+import { IMPERATIVE_PROGRAMMING } from "../code-strings/imperative-programming";
 import { CodeBlock } from "../components/CodeBlock";
 import { DescriptionBlock } from "../components/DescriptionBlock";
 import Layout from "../components/layout";
 import { PrintingBlock } from "../components/PrintingBlock";
-
-const title = "Imperative Programming";
-const description =
-  "Imperative programming is a programming paradigm that focuses on describing how a program should perform tasks, using statements that change a program's state step by step.";
-const topics = ["State", "Statements", "Control Flow"];
 
 export const ImperativeProgramming = () => {
   return (
     <Layout
       descriptionBlock={
         <DescriptionBlock
-          title={title}
-          description={description}
-          topics={topics}
+          title={IMPERATIVE_PROGRAMMING.title}
+          description={IMPERATIVE_PROGRAMMING.description}
+          topics={IMPERATIVE_PROGRAMMING.topics}
         />
       }
-      codeBlock={
-        <CodeBlock
-          codeString={"// This is a commentary" + "\n" + "const c = a + b"}
-        />
-      }
+      codeBlock={<CodeBlock codes={IMPERATIVE_PROGRAMMING.codeExamples} />}
       something={<></>}
       printingBlock={<PrintingBlock />}
     />
