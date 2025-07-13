@@ -42,11 +42,20 @@ for (let i = 0; i < text.length; i++) {
   }
 }
 
+const topicsDescription: Record<string, string> = {
+  State:
+    "In imperative programming, state refers to the current values held in a program's memory—such as the values of variables, the contents of data structures, or the status of the system. State is central to this paradigm because operations (statements) modify the state step by step. As a program runs, its state evolves in response to these operations.",
+  Statements:
+    "Statements are the fundamental building blocks of imperative code. Each statement performs a specific action, such as assigning a value to a variable, calling a function, or performing an operation like addition. These are executed in sequence to carry out the desired behavior. In contrast to declarative code, imperative code explicitly tells the computer how to perform a task using ordered statements.",
+  "Control Flow":
+    "Control flow determines the order in which statements are executed. Imperative programming relies on constructs like conditionals (if, else), loops (for, while), and function calls to control the sequence of operations. This gives the programmer precise control over how the program progresses and reacts to different conditions or inputs.",
+};
+
 export const IMPERATIVE_PROGRAMMING = {
   title: "Imperative Programming",
   description:
     "Imperative Programming is a programming paradigm that focuses on how a program operates. It uses statements that change a program’s state, step by step. You describe instructions the computer must follow to achieve a goal, much like giving a recipe with precise directions.",
-  topics: ["State", "Statements", "Control Flow"],
+  topicsDescription,
   codeExamples: [
     {
       runExample: () => console.log(sum),
