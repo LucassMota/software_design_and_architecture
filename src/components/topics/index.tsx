@@ -1,19 +1,19 @@
 import { TopicsEnum, SUBTOPICS } from "./types";
 
 interface Props {
-  setTheme: React.Dispatch<React.SetStateAction<Record<TopicsEnum, string>>>;
+  setTheme: React.Dispatch<
+    React.SetStateAction<Partial<Record<TopicsEnum, string>>>
+  >;
 }
 
 export const Topics = ({ setTheme }: Props) => {
   const topics = Object.values(TopicsEnum);
 
   const handleTopic = (topic: TopicsEnum, subtopic: string) => {
-    setTheme((prev) => {
-      return {
-        ...prev,
-        [topic]: subtopic,
-      };
-    });
+    setTheme((prev) => ({
+      ...prev,
+      [topic]: subtopic,
+    }));
   };
 
   return (

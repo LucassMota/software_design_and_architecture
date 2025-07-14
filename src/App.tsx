@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { IMPERATIVE_PROGRAMMING } from "./code-examples/imperative-programming";
 import { CodeBlock } from "./components/CodeBlock";
 import { DescriptionBlock } from "./components/DescriptionBlock";
 import { PrintingBlock } from "./components/PrintingBlock";
@@ -9,7 +8,7 @@ import Layout from "./components/Layout";
 import CODE_EXAMPLE from "./code-examples";
 
 function App() {
-  const [theme, setTheme] = useState<Record<TopicsEnum | string, string>>({
+  const [theme, setTheme] = useState<Partial<Record<TopicsEnum, string>>>({
     [TopicsEnum.IMPERATIVE_PROGRAMMING]: "State",
   });
   const topic = theme ? Object.keys(theme)[0] : "";
