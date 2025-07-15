@@ -4,9 +4,10 @@ interface Props {
   setTheme: React.Dispatch<
     React.SetStateAction<Partial<Record<TopicsEnum, string>>>
   >;
+  setSelectedTopic: React.Dispatch<React.SetStateAction<TopicsEnum>>;
 }
 
-export const Topics = ({ setTheme }: Props) => {
+export const Topics = ({ setTheme, setSelectedTopic }: Props) => {
   const topics = Object.values(TopicsEnum);
 
   const handleTopic = (topic: TopicsEnum, subtopic: string) => {
@@ -14,6 +15,7 @@ export const Topics = ({ setTheme }: Props) => {
       ...prev,
       [topic]: subtopic,
     }));
+    setSelectedTopic(topic);
   };
 
   return (

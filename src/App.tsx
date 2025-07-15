@@ -11,23 +11,27 @@ function App() {
   const [theme, setTheme] = useState<Partial<Record<TopicsEnum, string>>>({
     [TopicsEnum.IMPERATIVE_PROGRAMMING]: "State",
   });
-  const topic = theme ? Object.keys(theme)[0] : "";
-  const subtopic = theme ? theme[topic as TopicsEnum] : "";
-  const codeExample = CODE_EXAMPLE[topic as TopicsEnum];
+  const [selectedTopic, setSelectedTopic] = useState<TopicsEnum>(
+    TopicsEnum.IMPERATIVE_PROGRAMMING,
+  );
 
-  const mapSubtopicDescription = (): string | undefined => {
-    if (subtopic) return codeExample.topicsDescription[subtopic];
-  };
+  const subtopic = theme[selectedTopic];
+  const codeExample = CODE_EXAMPLE[selectedTopic];
+  const subtopicDescription = subtopic
+    ? codeExample.topicsDescription[subtopic]
+    : "";
 
   return (
     <Layout
-      topics={<Topics setTheme={setTheme} />}
+      topics={
+        <Topics setTheme={setTheme} setSelectedTopic={setSelectedTopic} />
+      }
       codeBlock={<CodeBlock codes={codeExample.codeExamples} />}
       description={
         <DescriptionBlock
-          topic={topic}
+          topic={selectedTopic}
           subtopic={subtopic}
-          subtopicDescription={mapSubtopicDescription()}
+          subtopicDescription={subtopicDescription}
         />
       }
       printingBlock={<PrintingBlock />}

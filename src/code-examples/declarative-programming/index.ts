@@ -2,7 +2,7 @@ import codeStrings from "./code-strings";
 
 const topicsDescription: Record<string, string> = {
   "Expressions Over Statements":
-    "In imperative programming, state refers to the current values held in a program's memory—such as the values of variables, the contents of data structures, or the status of the system. State is central to this paradigm because operations (statements) modify the state step by step. As a program runs, its state evolves in response to these operations.",
+    "Declarative code favors expressions (which return values) over statements (which perform actions). This leads to more composable and readable code.",
   Immutability:
     "In declarative programming, data is not mutated. Instead of modifying existing variables or structures, new ones are created with the desired changes.",
   "Function Composition":
