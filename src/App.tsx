@@ -20,6 +20,7 @@ function App() {
   const subtopicDescription = subtopic
     ? codeExample.topicsDescription[subtopic]
     : "";
+  const [codeOutput, setCodeOutput] = useState<(value: any) => void>();
 
   return (
     <Layout
@@ -27,7 +28,11 @@ function App() {
         <Topics setTheme={setTheme} setSelectedTopic={setSelectedTopic} />
       }
       codeBlock={
-        <CodeBlock key={selectedTopic} codes={codeExample.codeExamples} />
+        <CodeBlock
+          key={selectedTopic}
+          codes={codeExample.codeExamples}
+          setCodeOutput={setCodeOutput}
+        />
       }
       description={
         <DescriptionBlock
@@ -36,7 +41,7 @@ function App() {
           subtopicDescription={subtopicDescription}
         />
       }
-      printingBlock={<PrintingBlock />}
+      printingBlock={<PrintingBlock output={codeOutput} />}
     />
   );
 }

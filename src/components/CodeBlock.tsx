@@ -2,15 +2,18 @@ import { useCodeTheme } from "./hooks/useCodeTheme";
 
 type Code = {
   example: string;
-  runExample: () => void;
+  runExample: () => any;
+  setCodeOutput: (value: any) => void;
 };
 
 interface Props {
   codes: Code[];
+  setCodeOutput: (value: any) => void;
 }
 
-const Component = ({ example, runExample }: Code) => {
+const Component = ({ example, runExample, setCodeOutput }: Code) => {
   const { formattedCode } = useCodeTheme(example);
+
   return (
     <div>
       <div dangerouslySetInnerHTML={{ __html: formattedCode }} />
@@ -21,7 +24,10 @@ const Component = ({ example, runExample }: Code) => {
           alignItems: "center",
         }}
       >
-        <button style={{ cursor: "pointer" }} onClick={runExample}>
+        <button
+          style={{ cursor: "pointer" }}
+          onClick={() => setCodeOutput(runExample())}
+        >
           Run
         </button>
       </div>
@@ -29,7 +35,7 @@ const Component = ({ example, runExample }: Code) => {
   );
 };
 
-export const CodeBlock = ({ codes }: Props) => {
+export const CodeBlock = ({ codes, setCodeOutput }: Props) => {
   return (
     <div
       style={{
@@ -40,7 +46,11 @@ export const CodeBlock = ({ codes }: Props) => {
       }}
     >
       {codes.map((item: Code) => (
-        <Component example={item.example} runExample={item.runExample} />
+        <Component
+          example={item.example}
+          runExample={item.runExample}
+          setCodeOutput={setCodeOutput}
+        />
       ))}
     </div>
   );

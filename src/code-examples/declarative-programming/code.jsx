@@ -2,13 +2,13 @@ import { useState } from "react";
 
 // Expressions Over Statements
 const doubled = [1, 2, 3].map((x) => x * 2);
-const runExample1 = () => console.log(doubled);
+const runExample1 = () => doubled;
 
 // Immutability
 // Declarative (does not mutate original array)
 const nums = [1, 2, 3];
 const newNums = [...nums, 4];
-const runExample2 = () => console.log(newNums);
+const runExample2 = () => newNums;
 
 // Function Composition
 const double = (x) => x * 2;
@@ -19,7 +19,7 @@ const pipe =
     fns.reduce((v, f) => f(v), x);
 
 const process = pipe(increment, double);
-const runExample3 = () => console.log(process(3));
+const runExample3 = () => process(3);
 
 // Higher-Order Functions
 const users = [
@@ -31,7 +31,7 @@ const users = [
 const activeUsers2 = users
   .filter((user) => user.active)
   .map((user) => user.name);
-const runExample4 = () => console.log(activeUsers2);
+const runExample4 = () => activeUsers2;
 
 // Descriptive Over Procedural
 const Button = () => (
