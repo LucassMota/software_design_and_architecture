@@ -40,12 +40,12 @@ export const Topics = ({ setTheme, setSelectedTopic }: Props) => {
         backgroundColor: "#282A36",
         height: "100%",
         color: "#f3f3f3f3",
-        padding: 24,
+        padding: "0 24px",
       }}
     >
       {topics.map((topic) => (
         <Accordion key={topic} transition transitionTimeout={250}>
-          <AccordionItem header={<>{topic}</>} initialEntered>
+          <AccordionItem header={<>{topic}</>}>
             {SUBTOPICS[topic].map((subtopic) => (
               <div
                 style={{ padding: "8px 0" }}

@@ -18,6 +18,7 @@ export const PrintingBlock = ({ output }: Props) => {
           backgroundColor: "rgb(26 26 26)",
           color: "#f3f3f3f3",
           padding: 16,
+          overflow: "hidden",
         }}
       >
         {">_"}{" "}

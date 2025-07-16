@@ -12,9 +12,9 @@ export const DescriptionBlock = ({
     <div
       style={{
         backgroundColor: "#282A36",
-        height: "100%",
+        height: "height: calc(100% - 24px);",
         color: "#f3f3f3f3",
-        padding: 24,
+        padding: "0 24px",
       }}
     >
       <p>{topic}</p>

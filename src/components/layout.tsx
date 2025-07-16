@@ -16,8 +16,12 @@ const Layout = (prop: Props) => {
     height: "100vh",
   };
 
-  const boxStyle = {
-    overflow: "auto",
+  const boxStyle: React.CSSProperties = {
+    overflowY: "auto",
+    overflowX: "hidden",
+    minWidth: 0,
+    minHeight: "100%",
+    backgroundColor: "#282A36",
   };
 
   return (
