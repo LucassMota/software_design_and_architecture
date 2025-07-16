@@ -26,7 +26,9 @@ function App() {
       topics={
         <Topics setTheme={setTheme} setSelectedTopic={setSelectedTopic} />
       }
-      codeBlock={<CodeBlock codes={codeExample.codeExamples} />}
+      codeBlock={
+        <CodeBlock key={selectedTopic} codes={codeExample.codeExamples} />
+      }
       description={
         <DescriptionBlock
           topic={selectedTopic}

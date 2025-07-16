@@ -1,4 +1,6 @@
 import { TopicsEnum, SUBTOPICS } from "./types";
+import { Accordion, AccordionItem as Item } from "@szhsin/react-accordion";
+import styles from "./styles.module.css";
 
 interface Props {
   setTheme: React.Dispatch<
@@ -18,26 +20,43 @@ export const Topics = ({ setTheme, setSelectedTopic }: Props) => {
     setSelectedTopic(topic);
   };
 
+  // @ts-ignore
+  const AccordionItem = ({ header, ...rest }) => (
+    <Item
+      {...rest}
+      header={<>{header}</>}
+      className={styles.item}
+      buttonProps={{
+        className: () => `${styles.itemBtn}`,
+      }}
+      contentProps={{ className: styles.itemContent }}
+      panelProps={{ className: styles.itemPanel }}
+    />
+  );
+
   return (
     <div
       style={{
         backgroundColor: "#282A36",
         height: "100%",
-        color: "white",
+        color: "#f3f3f3f3",
         padding: 24,
       }}
     >
       {topics.map((topic) => (
-        <div key={topic}>
-          {topic}
-          <div>
+        <Accordion key={topic} transition transitionTimeout={250}>
+          <AccordionItem header={<>{topic}</>} initialEntered>
             {SUBTOPICS[topic].map((subtopic) => (
-              <div key={subtopic} onClick={() => handleTopic(topic, subtopic)}>
+              <div
+                style={{ padding: "8px 0" }}
+                key={subtopic}
+                onClick={() => handleTopic(topic, subtopic)}
+              >
                 {subtopic}
               </div>
             ))}
-          </div>
-        </div>
+          </AccordionItem>
+        </Accordion>
       ))}
     </div>
   );
